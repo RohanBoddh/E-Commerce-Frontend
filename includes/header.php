@@ -27,6 +27,12 @@ if ($headerJustIn) {
     <title>E-Commerce - Online Shopping for Students</title>
     <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl); ?>">
     
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="<?php echo $assetPrefix; ?>images/favicon.svg?v=1.1">
+    <link rel="alternate icon" type="image/svg+xml" href="/favicon.svg?v=1.1">
+    <link rel="apple-touch-icon" href="<?php echo $assetPrefix; ?>images/favicon.svg?v=1.1">
+    <meta name="theme-color" content="#2874f0">
+    
     <!-- Open Graph / Meta -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo htmlspecialchars($canonicalUrl); ?>">
