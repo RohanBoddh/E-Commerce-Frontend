@@ -1,0 +1,1411 @@
+/* ==========================================================================
+   E-COMMERCE DESIGN SYSTEM - FLIPKART & AMAZON INSPIRED
+   Modern, Rich, High-Converting Shopping Experience
+   ========================================================================== */
+
+:root {
+    /* Flipkart & Amazon Brand Colors */
+    --fk-blue: #2874f0;
+    --fk-blue-dark: #1259c7;
+    --fk-blue-deep: #0d3880;
+    --fk-yellow: #ff9f00;
+    --fk-yellow-hover: #f39700;
+    --fk-orange: #fb641b;
+    --fk-orange-hover: #e8530a;
+    --fk-green: #388e3c;
+    --fk-green-light: #e8f5e9;
+    --fk-bg: #f1f3f6;
+    --fk-card-bg: #ffffff;
+    --fk-border: #e0e0e0;
+    --fk-border-light: #f0f0f0;
+    
+    /* Neutral Shades */
+    --text-primary: #212121;
+    --text-secondary: #565959;
+    --text-muted: #878787;
+    --text-light: #ffffff;
+    
+    /* Shadows */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+    --shadow-hover: 0 14px 36px rgba(40, 116, 240, 0.16);
+
+    /* Radii */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-pill: 50px;
+
+    /* Transition */
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Base & Global Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--fk-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main, .page-content {
+    flex: 1 0 auto;
+}
+
+a {
+    color: var(--fk-blue);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--fk-blue-dark);
+}
+
+/* ==========================================================================
+   TOP ANNOUNCEMENT BAR
+   ========================================================================== */
+.top-announcement-bar {
+    background: #172337;
+    color: #c2c2c2;
+    font-size: 0.82rem;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.top-announcement-bar .admin-toplink {
+    color: #ff9f00;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.top-announcement-bar .admin-toplink:hover {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   MAIN NAVBAR (FLIPKART BLUE)
+   ========================================================================== */
+.fk-main-navbar {
+    background-color: var(--fk-blue);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    padding: 12px 0;
+    z-index: 1040;
+}
+
+.fk-brand {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.fk-brand .brand-title {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    font-style: italic;
+}
+
+.fk-brand .brand-sub {
+    font-size: 0.72rem;
+    color: #f0f0f0;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.fk-brand .brand-plus {
+    color: #ffe500;
+    font-weight: 700;
+}
+
+/* Search Bar Container */
+.fk-search-container {
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.fk-search-container form {
+    position: relative;
+    background: #ffffff;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+}
+
+.fk-search-input {
+    border: none;
+    box-shadow: none !important;
+    padding: 11px 16px;
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    background: transparent;
+}
+
+.fk-search-input::placeholder {
+    color: #878787;
+    font-size: 0.88rem;
+}
+
+.fk-search-btn {
+    background: transparent;
+    border: none;
+    color: var(--fk-blue);
+    padding: 0 16px;
+    font-size: 1.1rem;
+    transition: var(--transition-fast);
+}
+
+.fk-search-btn:hover {
+    color: var(--fk-blue-deep);
+    transform: scale(1.08);
+}
+
+/* Navigation Links */
+.fk-nav-link {
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 12px !important;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+}
+
+.fk-nav-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff !important;
+}
+
+.fk-nav-badge {
+    background: var(--fk-orange);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: var(--radius-pill);
+    padding: 2px 6px;
+    margin-left: 6px;
+}
+
+/* Cart Button */
+.fk-cart-btn {
+    background: #ffffff;
+    color: var(--fk-blue) !important;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 8px 18px;
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid transparent;
+    transition: var(--transition-fast);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fk-cart-btn:hover {
+    background: #f8f9fa;
+    color: var(--fk-blue-dark) !important;
+    transform: translateY(-1px);
+}
+
+.fk-cart-badge {
+    background: var(--fk-orange);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: var(--radius-pill);
+    padding: 3px 7px;
+}
+
+/* Login Button */
+.fk-login-btn {
+    background: #ffffff;
+    color: var(--fk-blue) !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 8px 24px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    transition: var(--transition-fast);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fk-login-btn:hover {
+    background: #f1f3f6;
+    color: var(--fk-blue-dark) !important;
+}
+
+/* Profile Dropdown */
+.fk-avatar {
+    width: 32px;
+    height: 32px;
+    background: #ffe500;
+    color: #172337;
+    font-weight: 800;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.fk-profile-toggle {
+    color: #ffffff !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+}
+
+.fk-dropdown-menu {
+    border-radius: var(--radius-md);
+    min-width: 220px;
+    padding: 8px 0;
+    margin-top: 8px;
+}
+
+.fk-dropdown-menu .dropdown-item {
+    padding: 9px 18px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+}
+
+.fk-dropdown-menu .dropdown-item:hover {
+    background: #f1f3f6;
+    color: var(--fk-blue);
+    padding-left: 22px;
+}
+
+/* ==========================================================================
+   SUB-HEADER CATEGORY STRIP (FLIPKART STYLE)
+   ========================================================================== */
+.fk-category-strip {
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid var(--fk-border-light);
+}
+
+.category-strip-list {
+    gap: 8px;
+}
+
+.category-strip-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: var(--transition-fast);
+}
+
+.category-strip-link:hover, .category-strip-link.active {
+    background: #f0f5ff;
+    color: var(--fk-blue);
+}
+
+/* ==========================================================================
+   HERO BANNER & CAROUSEL (BIG SALE DAYS)
+   ========================================================================== */
+.fk-hero-carousel-section {
+    background: transparent;
+}
+
+.fk-hero-carousel {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.fk-banner-slide {
+    padding: 60px 50px;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+}
+
+.slide-blue {
+    background: linear-gradient(135deg, #1d4ed8 0%, #2874f0 50%, #3b82f6 100%);
+}
+
+.slide-navy {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+}
+
+.slide-teal {
+    background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+}
+
+.banner-img {
+    max-height: 280px;
+    object-fit: cover;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.fw-extrabold {
+    font-weight: 800;
+}
+
+.text-light-opacity {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ==========================================================================
+   BUTTONS (FLIPKART & AMAZON VIBRANT ACTION BUTTONS)
+   ========================================================================== */
+.btn-main, .btn-primary {
+    background-color: var(--fk-blue) !important;
+    border-color: var(--fk-blue) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    padding: 9px 20px;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 6px rgba(40, 116, 240, 0.25);
+}
+
+.btn-main:hover, .btn-primary:hover {
+    background-color: var(--fk-blue-dark) !important;
+    border-color: var(--fk-blue-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(40, 116, 240, 0.35);
+}
+
+/* Flipkart Yellow (Add to cart) */
+.btn-warning-custom {
+    background-color: var(--fk-yellow) !important;
+    border-color: var(--fk-yellow) !important;
+    color: #111827 !important;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    padding: 9px 20px;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 6px rgba(255, 159, 0, 0.3);
+}
+
+.btn-warning-custom:hover {
+    background-color: var(--fk-yellow-hover) !important;
+    border-color: var(--fk-yellow-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 159, 0, 0.4);
+}
+
+/* Flipkart Orange (Buy Now) */
+.btn-orange-custom {
+    background-color: var(--fk-orange) !important;
+    border-color: var(--fk-orange) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    padding: 9px 20px;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 6px rgba(251, 100, 27, 0.3);
+}
+
+.btn-orange-custom:hover {
+    background-color: var(--fk-orange-hover) !important;
+    border-color: var(--fk-orange-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(251, 100, 27, 0.4);
+}
+
+/* Secondary Button */
+.btn-outline-custom {
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    padding: 8px 20px;
+    transition: var(--transition-fast);
+}
+
+.btn-outline-custom:hover {
+    background: #ffffff;
+    color: var(--fk-blue);
+}
+
+.small-btn {
+    display: inline-block;
+    background: #f1f3f6;
+    color: var(--fk-blue);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid #d4d5d9;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.small-btn:hover {
+    background: var(--fk-blue);
+    color: #ffffff;
+    border-color: var(--fk-blue);
+}
+
+/* ==========================================================================
+   PAGE BANNER
+   ========================================================================== */
+.page-banner {
+    background: linear-gradient(135deg, #172337 0%, #1e3a8a 100%);
+    color: #ffffff;
+    padding: 36px 0;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+}
+
+.page-banner h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.page-banner p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   PRODUCT CARDS (FLIPKART / AMAZON HIGH-CONVERTING DESIGN)
+   ========================================================================== */
+.fk-product-card {
+    background: var(--fk-card-bg);
+    border: 1px solid var(--fk-border) !important;
+    border-radius: var(--radius-md) !important;
+    transition: var(--transition-smooth);
+    overflow: hidden;
+    position: relative;
+}
+
+.fk-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: #b0c4de !important;
+}
+
+.fk-card-image-box {
+    background: #ffffff;
+    overflow: hidden;
+    border-bottom: 1px solid var(--fk-border-light);
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.fk-product-img {
+    max-height: 190px;
+    max-width: 90%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.fk-product-card:hover .fk-product-img {
+    transform: scale(1.05);
+}
+
+/* Discount Badge */
+.fk-discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--fk-green);
+    color: #ffffff;
+    font-size: 0.74rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    z-index: 2;
+    letter-spacing: 0.3px;
+}
+
+/* Wishlist Floating Button */
+.fk-wishlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b0b0b0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    z-index: 2;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.fk-wishlist-btn:hover {
+    color: #e11d48;
+    transform: scale(1.15);
+}
+
+.fk-wishlist-btn.active {
+    color: #e11d48;
+}
+
+/* Card Body */
+.fk-card-body {
+    padding: 14px 16px;
+}
+
+.fk-product-category {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #878787;
+    letter-spacing: 0.5px;
+}
+
+.fk-product-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.35;
+    height: 2.7em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.fk-product-title a:hover {
+    color: var(--fk-blue);
+}
+
+/* Rating Badge (Green Pill) */
+.fk-rating-badge {
+    background: var(--fk-green);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/* Flipkart Assured Tag */
+.fk-assured-tag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--fk-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.fk-assured-tag .assured-text {
+    letter-spacing: -0.5px;
+}
+
+/* Price Block */
+.fk-current-price {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.fk-old-price {
+    font-size: 0.88rem;
+    color: #878787;
+    text-decoration: line-through;
+}
+
+.fk-discount-text {
+    color: var(--fk-green);
+    font-weight: 700;
+}
+
+.text-primary-custom {
+    color: var(--fk-blue) !important;
+}
+
+/* ==========================================================================
+   CATEGORY CARDS
+   ========================================================================== */
+.fk-category-card {
+    background: #ffffff;
+    border: 1px solid var(--fk-border);
+    transition: var(--transition-smooth);
+}
+
+.fk-category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--fk-blue);
+}
+
+.cat-thumbnail {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    margin: 0 auto;
+    transition: var(--transition-smooth);
+    border: 2px solid #eef2ff;
+}
+
+.fk-category-card:hover .cat-thumbnail {
+    transform: scale(1.08);
+    border-color: var(--fk-blue);
+}
+
+.cat-card-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   CART & CHECKOUT STYLING (FLIPKART STYLE TWO-COLUMN)
+   ========================================================================== */
+.fk-cart-thumb {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    background: #f8f9fa;
+    padding: 4px;
+}
+
+.fk-cart-item-card {
+    transition: var(--transition-fast);
+}
+
+.fk-cart-item-card:hover {
+    background: #fafafa;
+}
+
+.fk-price-details-card {
+    background: #ffffff;
+    border: 1px solid var(--fk-border);
+}
+
+.letter-spacing-1 {
+    letter-spacing: 0.08em;
+}
+
+/* Checkout step styling */
+.checkout-box {
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    padding: 30px;
+    border: 1px solid var(--fk-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.checkout-step-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--fk-blue);
+}
+
+.checkout-step-header .step-num {
+    width: 32px;
+    height: 32px;
+    background: var(--fk-blue);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+}
+
+.order-summary-box {
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    padding: 26px;
+    border: 1px solid var(--fk-border);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   PRODUCT DETAIL PAGE
+   ========================================================================== */
+.detail-main-image {
+    max-height: 420px;
+    object-fit: contain;
+}
+
+.fk-detail-heading {
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
+}
+
+.qty-step-btn {
+    width: 36px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   ADMIN PANEL STYLING (MODERN SELLER CENTRAL / FLIPKART SELLER)
+   ========================================================================== */
+.admin-panel {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    width: 260px;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 28px 20px;
+    flex-shrink: 0;
+}
+
+.admin-sidebar h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.admin-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-sidebar li {
+    margin-bottom: 6px;
+}
+
+.admin-sidebar a {
+    color: #cbd5e1;
+    display: block;
+    padding: 11px 16px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: var(--transition-fast);
+}
+
+.admin-sidebar a:hover {
+    background: #1e293b;
+    color: #38bdf8;
+    padding-left: 20px;
+}
+
+.admin-content {
+    flex: 1;
+    padding: 32px 36px;
+    background: var(--fk-bg);
+}
+
+.admin-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.admin-topbar h1 {
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin-bottom: 0;
+    color: #0f172a;
+}
+
+.admin-stat-card {
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    padding: 24px;
+    border-left: 5px solid var(--fk-blue);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+}
+
+.admin-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.admin-stat-card h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 4px;
+}
+
+.admin-stat-card p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-card {
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    padding: 26px;
+    border: 1px solid var(--fk-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-table th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--fk-border);
+}
+
+.admin-table td {
+    padding: 14px 16px;
+    vertical-align: middle;
+    font-size: 0.92rem;
+}
+
+.admin-login-body {
+    background: linear-gradient(135deg, #172337 0%, #2874f0 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-login-card {
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================================================
+   FOOTER (AMAZON / FLIPKART STYLE)
+   ========================================================================== */
+.back-to-top-bar {
+    background: #232f3e;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.back-to-top-bar:hover {
+    background: #37475a;
+}
+
+.fk-footer {
+    background: #172337;
+    color: #ffffff;
+    margin-top: auto;
+    font-size: 0.88rem;
+}
+
+.footer-heading {
+    color: #878787;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.footer-desc {
+    color: #c2c2c2;
+    line-height: 1.6;
+}
+
+.campus-trust-pill {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: #ffe500;
+    padding-left: 5px;
+}
+
+.footer-contact {
+    color: #c2c2c2;
+    font-size: 0.88rem;
+}
+
+.footer-divider {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   PAGINATION
+   ========================================================================== */
+.custom-pagination .page-link {
+    color: var(--fk-blue);
+    border: 1px solid var(--fk-border);
+    padding: 9px 18px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    margin: 0 3px;
+    transition: var(--transition-fast);
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: var(--fk-blue);
+    border-color: var(--fk-blue);
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(40, 116, 240, 0.3);
+}
+
+.custom-pagination .page-link:hover {
+    background-color: #f1f3f6;
+    color: var(--fk-blue-dark);
+}
+
+/* ==========================================================================
+   ABOUT & CONTACT PAGE STYLES
+   ========================================================================== */
+.about-image-box img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.about-tag {
+    display: inline-block;
+    color: var(--fk-blue);
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.about-feature-card {
+    background: #ffffff;
+    border: 1px solid var(--fk-border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    height: 100%;
+    transition: var(--transition-smooth);
+    text-align: center;
+}
+
+.about-feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--fk-blue);
+}
+
+.about-feature-icon {
+    font-size: 2.2rem;
+    margin-bottom: 14px;
+}
+
+.about-stat-card {
+    background: #ffffff;
+    border: 1px solid var(--fk-border);
+    border-radius: var(--radius-md);
+    padding: 28px 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.about-stat-card h3 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--fk-blue);
+    margin-bottom: 4px;
+}
+
+.about-stat-card p {
+    color: var(--text-muted);
+    font-weight: 600;
+    margin: 0;
+}
+
+.about-cta-box {
+    background: linear-gradient(135deg, #1d4ed8 0%, #2874f0 100%);
+    color: #ffffff;
+    padding: 48px 30px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.contact-info-box, .contact-form-box {
+    background: #ffffff;
+    border: 1px solid var(--fk-border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+}
+
+.form-control, .form-select {
+    border: 1px solid var(--fk-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    transition: var(--transition-fast);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--fk-blue);
+    box-shadow: 0 0 0 3px rgba(40, 116, 240, 0.2);
+}
+
+.fk-input-styled {
+    border: 1px solid var(--fk-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 0.95rem;
+}
+
+.fk-auth-card {
+    border: 1px solid var(--fk-border);
+}
+
+.fk-auth-sidebar {
+    background: linear-gradient(135deg, #1d4ed8 0%, #2874f0 100%);
+}
+
+/* ==========================================================================
+   FLIPKART / AMAZON MULTI-PAYMENT SYSTEM STYLES
+   ========================================================================== */
+.checkout-stepper-box {
+    background: #ffffff;
+    border: 1px solid var(--fk-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-xs);
+}
+
+.checkout-step-header {
+    background: #ffffff;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--fk-border-light);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.step-num {
+    background: var(--fk-blue);
+    color: #ffffff;
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.checkout-step-header h4 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #878787;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.checkout-step-header.active h4 {
+    color: var(--fk-blue);
+}
+
+.checkout-step-body {
+    padding: 20px;
+}
+
+/* Payment Method Cards */
+.payment-method-card {
+    border: 1px solid var(--fk-border);
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    transition: var(--transition-fast);
+    position: relative;
+    cursor: pointer;
+}
+
+.payment-method-card:hover {
+    border-color: #c2c2c2;
+    background: #fafafa;
+}
+
+.payment-method-card.selected {
+    border: 2px solid var(--fk-blue);
+    background: #fbfdff;
+    box-shadow: 0 4px 12px rgba(40, 116, 240, 0.08);
+}
+
+.payment-method-card .form-check-input {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+}
+
+.payment-method-card .form-check-input:checked {
+    background-color: var(--fk-blue);
+    border-color: var(--fk-blue);
+}
+
+.payment-details-drawer {
+    display: none;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--fk-border);
+    animation: fadeInDrawer 0.25s ease-in-out;
+}
+
+.payment-method-card.selected .payment-details-drawer {
+    display: block;
+}
+
+@keyframes fadeInDrawer {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* UPI QR & Payment Box */
+.upi-qr-card {
+    background: #f8faff;
+    border: 1px solid #d4e3fc;
+    border-radius: var(--radius-md);
+    padding: 18px;
+    text-align: center;
+}
+
+.upi-qr-wrapper {
+    background: #ffffff;
+    display: inline-block;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e0e0e0;
+}
+
+.upi-badge-strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.upi-pill {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #424242;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Bank Selection Grid */
+.bank-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+}
+
+.bank-option-btn {
+    border: 1px solid var(--fk-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 8px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #ffffff;
+    transition: var(--transition-fast);
+}
+
+.bank-option-btn:hover {
+    border-color: var(--fk-blue);
+    background: #f0f7ff;
+}
+
+.bank-option-btn input[type="radio"]:checked + label,
+.bank-option-btn.active {
+    border-color: var(--fk-blue);
+    background: #e8f2fe;
+    color: var(--fk-blue);
+}
+
+/* Order History Timeline */
+.order-tracking-step {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+}
+
+.order-tracking-step::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #388e3c;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 2px #388e3c;
+}
+
+.order-tracking-step::after {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 20px;
+    bottom: -10px;
+    width: 2px;
+    background: #e0e0e0;
+}
+
+.order-tracking-step:last-child::after {
+    display: none;
+}
+
+/* Category Strip Polish */
+.category-strip-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 14px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #212121;
+    border-radius: 6px;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.category-strip-link:hover,
+.category-strip-link.active {
+    color: var(--fk-blue);
+    background: rgba(40, 116, 240, 0.08);
+}
+
+.category-strip-link .cat-icon {
+    font-size: 1.25rem;
+    margin-bottom: 2px;
+}
+
+/* Product Card Improvements */
+.fk-product-card:hover .fk-product-img {
+    transform: scale(1.05);
+}
+
+.fk-product-img {
+    transition: transform 0.3s ease;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS (MOBILE / TABLET ADAPTATION)
+   ========================================================================== */
+@media (max-width: 991.98px) {
+    .fk-main-navbar {
+        padding: 10px 0;
+    }
+    
+    .fk-search-container {
+        order: 3;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .admin-panel {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .admin-content {
+        padding: 20px 16px;
+    }
+    
+    .fk-banner-slide {
+        padding: 36px 20px;
+        min-height: auto;
+    }
+
+    .bank-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .fk-brand .brand-title {
+        font-size: 1.2rem;
+    }
+    
+    .fk-card-image-box {
+        height: 160px;
+    }
+    
+    .fk-product-img {
+        max-height: 130px;
+    }
+    
+    .fk-current-price {
+        font-size: 1.05rem;
+    }
+    
+    .fk-card-body {
+        padding: 10px 12px;
+    }
+
+    .checkout-step-body {
+        padding: 14px 10px;
+    }
+}
