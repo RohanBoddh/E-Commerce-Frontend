@@ -26,10 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $userArr = docToArray($user);
 
             if (password_verify($password, $userArr['password'])) {
-                $_SESSION['user_id']    = $userArr['id'];
-                $_SESSION['user_name']  = $userArr['name'];
-                $_SESSION['user_email'] = $userArr['email'];
-                $_SESSION['role']       = $userArr['role'] ?? 'user';
+                $_SESSION['user_id']        = $userArr['id'];
+                $_SESSION['user_name']      = $userArr['name'];
+                $_SESSION['user_email']     = $userArr['email'];
+                $_SESSION['role']           = $userArr['role'] ?? 'user';
+                $_SESSION['just_logged_in'] = true;
 
                 if (($userArr['role'] ?? 'user') === 'admin') {
                     $_SESSION['admin_id']    = $userArr['id'];

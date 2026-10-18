@@ -1,15 +1,22 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-unset($_SESSION['admin_id']);
-unset($_SESSION['admin_name']);
-unset($_SESSION['admin_email']);
-unset($_SESSION['is_admin']);
+$_SESSION = [];
 
-unset($_SESSION['user_id']);
-unset($_SESSION['user_name']);
-unset($_SESSION['user_email']);
-unset($_SESSION['role']);
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(
+        session_name(),
+        '',
+        time() - 42000,
+        $params["path"],
+        $params["domain"],
+        $params["secure"],
+        $params["httponly"]
+    );
+}
 
 session_destroy();
 

@@ -175,7 +175,7 @@ include(__DIR__ . '/includes/navbar.php');
                     <?php
                     $productId     = $product['id'];
                     $rating        = getProductRating(crc32($productId) % 10 + 1);
-                    $discount      = getDiscountPercent((float)$product['price']);
+                    $discount      = getDiscountPercent((float)$product['price'], $product['discount'] ?? null);
                     $originalPrice = getOriginalPrice((float)$product['price'], $discount);
                     $isWishlisted  = in_array($productId, $wishlistProductIds);
                     $price         = (float)$product['price'];
@@ -230,10 +230,10 @@ include(__DIR__ . '/includes/navbar.php');
                                 </p>
 
                                 <div class="fk-price-block mt-auto mb-3">
-                                    <div class="d-flex align-items-baseline gap-2">
+                                    <div class="d-flex flex-wrap align-items-baseline gap-2">
                                         <span class="fk-current-price">₹<?php echo number_format($price, 2); ?></span>
                                         <span class="fk-old-price">₹<?php echo number_format($originalPrice, 2); ?></span>
-                                        <span class="fk-discount-text text-success small fw-bold"><?php echo $discount; ?>% off</span>
+                                        <span class="fk-discount-text"><?php echo $discount; ?>% off</span>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center mt-1">
                                         <span class="text-success small fw-semibold">

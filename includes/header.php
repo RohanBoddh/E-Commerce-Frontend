@@ -1,5 +1,6 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.cookie_lifetime', '0');
     session_start();
 }
 $isAdminPage = (strpos($_SERVER['REQUEST_URI'] ?? '', '/admin') !== false);
@@ -10,6 +11,13 @@ if (!defined('BASE_URL')) {
 }
 $currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 $canonicalUrl = rtrim(BASE_URL, '/') . '/' . ltrim($currentPath, '/');
+
+$headerLoggedIn = isset($_SESSION['user_id']);
+$headerUserId   = $headerLoggedIn ? (string)$_SESSION['user_id'] : '';
+$headerJustIn   = !empty($_SESSION['just_logged_in']);
+if ($headerJustIn) {
+    unset($_SESSION['just_logged_in']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +43,13 @@ $canonicalUrl = rtrim(BASE_URL, '/') . '/' . ltrim($currentPath, '/');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <!-- Flipkart / Amazon Inspired Modern Stylesheet -->
-    <link rel="stylesheet" href="<?php echo $assetPrefix; ?>css/style.css?v=2.0">
+    <link rel="stylesheet" href="<?php echo $assetPrefix; ?>css/style.css?v=2.1">
+
+    <!-- Active Session Tracking for Auto-Logout on Tab/Browser Close -->
+    <script>
+        window.USER_LOGGED_IN = <?php echo $headerLoggedIn ? 'true' : 'false'; ?>;
+        window.USER_ID = <?php echo json_encode($headerUserId); ?>;
+        window.JUST_LOGGED_IN = <?php echo $headerJustIn ? 'true' : 'false'; ?>;
+    </script>
 </head>
 <body>

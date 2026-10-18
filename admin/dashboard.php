@@ -39,7 +39,13 @@ foreach ($db->orders->find([], ['sort' => ['created_at' => -1], 'limit' => 5]) a
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css?v=2.0">
+    <link rel="stylesheet" href="../assets/css/style.css?v=2.1">
+    <script>
+        window.USER_LOGGED_IN = <?php echo isset($_SESSION['admin_id']) ? 'true' : 'false'; ?>;
+        window.USER_ID = <?php echo json_encode((string)($_SESSION['admin_id'] ?? '')); ?>;
+        window.JUST_LOGGED_IN = <?php echo !empty($_SESSION['just_logged_in']) ? 'true' : 'false'; ?>;
+    </script>
+    <script src="../assets/js/script.js?v=2.1"></script>
 </head>
 <body>
 

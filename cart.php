@@ -76,7 +76,7 @@ foreach ($cartCursor as $cartDoc) {
     $productArr = docToArray($product);
 
     $price = (float)$productArr['price'];
-    $discount = getDiscountPercent($price);
+    $discount = getDiscountPercent($price, $productArr['discount'] ?? null);
     $origPrice = getOriginalPrice($price, $discount);
     $qty = (int)$item['quantity'];
 
@@ -160,7 +160,7 @@ include(__DIR__ . '/includes/navbar.php');
                                                     <?php echo htmlspecialchars($item['name']); ?>
                                                 </a>
                                             </h6>
-                                            <div class="d-flex align-items-baseline gap-2 mb-2">
+                                            <div class="d-flex flex-wrap align-items-baseline gap-2 mb-2">
                                                 <span class="fs-5 fw-bold text-dark">₹<span class="item-price"><?php echo number_format($price, 2, '.', ''); ?></span></span>
                                                 <span class="text-muted text-decoration-line-through small">₹<?php echo number_format($item['original_price'], 2); ?></span>
                                                 <span class="text-success small fw-bold"><?php echo $item['discount']; ?>% off</span>

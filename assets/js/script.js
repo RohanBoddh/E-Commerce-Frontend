@@ -3,6 +3,23 @@
  * Flipkart & Amazon Style Enhancements
  */
 
+// 0. Auto Logout on Tab/Browser Close (Session Lifespan Guard)
+(function() {
+    try {
+        if (typeof window.USER_LOGGED_IN !== 'undefined' && window.USER_LOGGED_IN && window.USER_ID) {
+            const key = 'ecom_active_session_' + window.USER_ID;
+            if (window.JUST_LOGGED_IN) {
+                sessionStorage.setItem(key, '1');
+            } else if (!sessionStorage.getItem(key)) {
+                // Browser or tab was closed and reopened: immediately destroy server session
+                const logoutPath = window.location.pathname.indexOf('/admin') !== -1 ? 'logout.php' : 'logout.php';
+                window.location.replace(logoutPath + '?auto=1');
+                return;
+            }
+        }
+    } catch (e) {}
+})();
+
 document.addEventListener('DOMContentLoaded', function () {
     // 1. Back to Top Smooth Scroll
     const backToTopBtn = document.getElementById('backToTopBar');

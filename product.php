@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['add_to_cart']) || is
 }
 
 $price = (float)$product['price'];
-$discount = getDiscountPercent($price);
+$discount = getDiscountPercent($price, $product['discount'] ?? null);
 $originalPrice = getOriginalPrice($price, $discount);
 $stock = (int)$product['stock'];
 $rating = getProductRating(crc32($product['id']) % 10 + 1);
@@ -212,11 +212,14 @@ include(__DIR__ . '/includes/navbar.php');
 
                         <!-- PRICE BLOCK (FLIPKART STYLE) -->
                         <div class="detail-price-box p-3 rounded-3 bg-light mb-4">
-                            <div class="special-price-tag text-success fw-bold small mb-1">Special Student Price</div>
-                            <div class="d-flex align-items-baseline gap-3">
+                            <div class="special-price-tag text-success fw-bold small mb-1">
+                                <i class="bi bi-tag-fill me-1"></i> Special Student Deal
+                            </div>
+                            <div class="d-flex flex-wrap align-items-baseline gap-2 gap-sm-3">
                                 <span class="fs-1 fw-extrabold text-dark">₹<span id="unitPrice"><?php echo number_format($price, 2, '.', ''); ?></span></span>
                                 <span class="fs-5 text-muted text-decoration-line-through">₹<?php echo number_format($originalPrice, 2); ?></span>
-                                <span class="fs-5 text-success fw-bold"><?php echo $discount; ?>% off</span>
+                                <span class="badge bg-success fs-6 fw-bold px-2 py-1"><?php echo $discount; ?>% OFF</span>
+                                <span class="text-success fw-bold small">You Save ₹<?php echo number_format($originalPrice - $price, 2); ?>!</span>
                             </div>
                             <div class="text-success small fw-semibold mt-1">
                                 <i class="bi bi-check-circle-fill me-1"></i> Inclusive of all campus taxes & free hostel gate delivery
