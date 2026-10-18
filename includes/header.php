@@ -4,6 +4,12 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 $isAdminPage = (strpos($_SERVER['REQUEST_URI'] ?? '', '/admin') !== false);
 $assetPrefix = $isAdminPage ? '../assets/' : 'assets/';
+
+if (!defined('BASE_URL')) {
+    define('BASE_URL', 'https://college-e-commerce-five.vercel.app');
+}
+$currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+$canonicalUrl = rtrim(BASE_URL, '/') . '/' . ltrim($currentPath, '/');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +17,13 @@ $assetPrefix = $isAdminPage ? '../assets/' : 'assets/';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Commerce - Online Shopping for Students</title>
+    <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl); ?>">
+    
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo htmlspecialchars($canonicalUrl); ?>">
+    <meta property="og:title" content="E-Commerce - Online Shopping for Students">
+    <meta property="og:description" content="Flipkart & Amazon inspired campus store with 49+ student essentials.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

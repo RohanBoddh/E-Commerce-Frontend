@@ -28,11 +28,17 @@ A modern, high-converting college e-commerce storefront inspired by **Flipkart**
 * **Frontend**: HTML5, PHP 8.2, Vanilla CSS (Design Tokens & Flipkart System), JavaScript, Bootstrap 5.3, Bootstrap Icons.
 * **Backend Integration**: MongoDB Atlas with transaction safety and stock management.
 
-## 🛠️ Getting Started
+## 🌐 Live Production Deployment
+
+* **Live Storefront URL**: **[https://college-e-commerce-five.vercel.app](https://college-e-commerce-five.vercel.app)**
+* **Platform**: Vercel Serverless (Global Edge Network)
+* **Backend Database**: MongoDB Atlas
+
+## 🛠️ Local Development (Optional)
 
 1. Ensure PHP 8.2+ is installed with `curl`, `openssl`, and `mongodb` extensions.
 2. Start the local server:
    ```bash
    php -S 127.0.0.1:8000 -t .
    ```
-3. Open `http://127.0.0.1:8000/` in your browser.
+3. Or visit the production live site at `https://college-e-commerce-five.vercel.app`.
