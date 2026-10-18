@@ -1348,19 +1348,191 @@ a:hover {
 }
 
 /* ==========================================================================
-   RESPONSIVENESS (MOBILE / TABLET ADAPTATION)
+   RESPONSIVENESS — COMPLETE MOBILE / TABLET / DESKTOP ADAPTATION
+   Phone (≤576px) → Tablet (≤991px) → Desktop (≥992px)
+   ========================================================================== */
+
+/* ---- Viewport Meta Safety ---- */
+html {
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   EXTRA LARGE SCREENS (≤1399px) — Slight adjustments for mid-desktops
+   ========================================================================== */
+@media (max-width: 1399.98px) {
+    .fk-search-container {
+        max-width: 480px;
+    }
+
+    .fk-banner-slide {
+        padding: 50px 40px;
+    }
+}
+
+/* ==========================================================================
+   LARGE SCREENS / SMALL LAPTOPS (≤1199px)
+   ========================================================================== */
+@media (max-width: 1199.98px) {
+    .fk-search-container {
+        max-width: 400px;
+    }
+
+    .fk-banner-slide {
+        padding: 44px 32px;
+        min-height: 320px;
+    }
+
+    .banner-img {
+        max-height: 240px;
+    }
+
+    .fk-detail-heading {
+        font-size: 1.55rem;
+    }
+
+    .admin-content {
+        padding: 28px 28px;
+    }
+
+    .about-cta-box {
+        padding: 38px 24px;
+    }
+}
+
+/* ==========================================================================
+   TABLETS & BELOW (≤991px) — Navbar collapses, layouts stack
    ========================================================================== */
 @media (max-width: 991.98px) {
+    /* --- NAVBAR --- */
     .fk-main-navbar {
         padding: 10px 0;
     }
-    
+
     .fk-search-container {
         order: 3;
         width: 100%;
+        max-width: 100%;
+        margin: 10px 0 0 0;
+    }
+
+    .fk-search-container form {
+        border-radius: var(--radius-sm);
+    }
+
+    /* Collapsed menu styling */
+    .navbar-collapse {
+        background: var(--fk-blue-dark);
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        padding: 16px;
         margin-top: 10px;
     }
-    
+
+    .fk-nav-list {
+        gap: 4px !important;
+    }
+
+    .fk-nav-link {
+        padding: 10px 14px !important;
+        border-radius: var(--radius-sm);
+        width: 100%;
+    }
+
+    .fk-nav-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .fk-cart-btn, .fk-login-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 4px;
+    }
+
+    .fk-profile-dropdown {
+        width: 100%;
+    }
+
+    .fk-profile-toggle {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 10px 14px !important;
+    }
+
+    /* Toggler Button */
+    .fk-toggler {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 4px 10px;
+        border-radius: var(--radius-sm);
+    }
+
+    .fk-toggler:focus {
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+    }
+
+    /* --- CATEGORY STRIP --- */
+    .fk-category-strip {
+        overflow: hidden;
+    }
+
+    .category-strip-list {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 4px;
+        padding-bottom: 4px;
+    }
+
+    .category-strip-list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category-strip-link {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        min-width: max-content;
+    }
+
+    .category-strip-link .cat-icon {
+        font-size: 1.1rem;
+    }
+
+    /* --- HERO BANNER --- */
+    .fk-banner-slide {
+        padding: 32px 20px;
+        min-height: auto;
+    }
+
+    .fk-banner-slide h1 {
+        font-size: 1.75rem !important;
+    }
+
+    .fk-banner-slide .lead {
+        font-size: 0.95rem;
+    }
+
+    .fk-banner-slide .badge {
+        font-size: 0.82rem !important;
+    }
+
+    .banner-img {
+        max-height: 200px;
+    }
+
+    /* --- PRODUCT CARDS GRID --- */
+    .fk-card-image-box {
+        height: 200px;
+    }
+
+    .fk-product-img {
+        max-height: 170px;
+    }
+
+    /* --- ADMIN PANEL --- */
     .admin-panel {
         flex-direction: column;
     }
@@ -1370,42 +1542,1042 @@ a:hover {
         padding: 16px;
     }
 
+    .admin-sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .admin-sidebar li {
+        margin-bottom: 0;
+    }
+
+    .admin-sidebar a {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
     .admin-content {
         padding: 20px 16px;
     }
-    
-    .fk-banner-slide {
-        padding: 36px 20px;
-        min-height: auto;
+
+    .admin-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
     }
 
+    .admin-topbar h1 {
+        font-size: 1.5rem;
+    }
+
+    .admin-stat-card {
+        padding: 18px;
+    }
+
+    .admin-stat-card h3 {
+        font-size: 1.6rem;
+    }
+
+    /* Admin Tables → Horizontal scroll */
+    .admin-card {
+        padding: 16px;
+        overflow-x: auto;
+    }
+
+    .admin-table {
+        min-width: 600px;
+    }
+
+    /* --- CART & CHECKOUT --- */
+    .fk-cart-thumb {
+        width: 70px;
+        height: 70px;
+    }
+
+    .checkout-box {
+        padding: 20px;
+    }
+
+    .order-summary-box {
+        padding: 20px;
+    }
+
+    .checkout-step-header h4 {
+        font-size: 0.95rem;
+    }
+
+    /* --- PAYMENT --- */
     .bank-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-}
 
-@media (max-width: 575.98px) {
-    .fk-brand .brand-title {
+    .payment-method-card {
+        padding: 14px;
+    }
+
+    /* --- PRODUCT DETAIL --- */
+    .fk-detail-img-wrapper {
+        position: static !important;
+        top: auto !important;
+    }
+
+    .detail-main-image {
+        max-height: 350px;
+    }
+
+    .fk-detail-heading {
+        font-size: 1.4rem;
+    }
+
+    /* --- PAGE BANNER --- */
+    .page-banner {
+        padding: 28px 0;
+    }
+
+    .page-banner h1 {
+        font-size: 1.65rem;
+    }
+
+    /* --- ABOUT & CONTACT --- */
+    .about-cta-box {
+        padding: 32px 20px;
+    }
+
+    .about-cta-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-info-box, .contact-form-box {
+        padding: 24px;
+    }
+
+    /* --- FOOTER --- */
+    .fk-footer .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* --- FEATURES STRIP --- */
+    .feature-box {
+        padding: 12px !important;
+    }
+
+    .feature-box h6 {
+        font-size: 0.82rem;
+    }
+
+    .feature-box small {
+        font-size: 0.72rem;
+    }
+
+    .feature-box .feature-icon {
+        font-size: 1.5rem !important;
+    }
+
+    /* --- AUTH PAGES --- */
+    .fk-auth-sidebar {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    /* Section headings */
+    .section-heading {
         font-size: 1.2rem;
     }
-    
+}
+
+/* ==========================================================================
+   SMALL TABLETS / LARGE PHONES (≤767px) — Further stacking
+   ========================================================================== */
+@media (max-width: 767.98px) {
+    /* Hero Banner */
+    .fk-banner-slide {
+        padding: 28px 16px;
+    }
+
+    .fk-banner-slide h1 {
+        font-size: 1.45rem !important;
+        line-height: 1.3;
+    }
+
+    .fk-banner-slide .lead {
+        font-size: 0.88rem;
+        margin-bottom: 16px !important;
+    }
+
+    .fk-banner-slide .btn {
+        padding: 10px 18px !important;
+        font-size: 0.85rem;
+    }
+
+    /* Category Grid → 3 per row */
+    .cat-thumbnail {
+        width: 70px;
+        height: 70px;
+    }
+
+    .cat-card-title {
+        font-size: 0.78rem;
+    }
+
+    /* Product Grid adjustments */
     .fk-card-image-box {
-        height: 160px;
+        height: 180px;
     }
-    
+
     .fk-product-img {
-        max-height: 130px;
+        max-height: 150px;
     }
-    
+
+    .fk-product-title {
+        font-size: 0.88rem;
+        height: auto;
+        -webkit-line-clamp: 2;
+    }
+
+    /* Cart Items */
+    .fk-cart-thumb {
+        width: 64px;
+        height: 64px;
+    }
+
+    /* Price Details Box */
+    .fk-price-details-card {
+        margin-top: 20px;
+    }
+
+    /* Checkout */
+    .checkout-box {
+        padding: 16px;
+    }
+
+    .checkout-step-body {
+        padding: 16px 12px;
+    }
+
+    .checkout-step-header {
+        padding: 12px 16px;
+    }
+
+    /* Product Detail */
+    .detail-main-image {
+        max-height: 280px;
+        margin-bottom: 20px;
+    }
+
+    .fk-detail-heading {
+        font-size: 1.3rem;
+    }
+
+    /* Page Banner */
+    .page-banner h1 {
+        font-size: 1.4rem;
+    }
+
+    .page-banner p {
+        font-size: 0.88rem;
+    }
+
+    /* About Stats */
+    .about-stat-card h3 {
+        font-size: 1.8rem;
+    }
+
+    .about-feature-card {
+        padding: 18px;
+    }
+
+    /* Footer → Full width columns */
+    .fk-footer .row > div {
+        text-align: center;
+    }
+
+    .fk-footer .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .fk-footer .footer-links li {
+        margin-bottom: 4px;
+    }
+
+    .payment-partners {
+        justify-content: center !important;
+    }
+
+    /* Order History Cards */
+    .order-history-card .p-4 {
+        padding: 16px !important;
+    }
+
+    /* Auth Card */
+    .fk-auth-sidebar {
+        padding: 24px !important;
+    }
+
+    /* Feature Strip */
+    .feature-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 6px !important;
+    }
+
+    /* Tables scroll */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Pagination */
+    .custom-pagination .page-link {
+        padding: 7px 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Student Promo */
+    .student-offer-banner {
+        text-align: center;
+    }
+
+    .student-offer-banner h2 {
+        font-size: 1.4rem;
+    }
+
+    .student-offer-banner .lead {
+        font-size: 0.9rem;
+    }
+}
+
+/* ==========================================================================
+   PHONES (≤575px) — Full mobile optimization
+   ========================================================================== */
+@media (max-width: 575.98px) {
+    /* --- NAVBAR --- */
+    .fk-brand .brand-title {
+        font-size: 1.15rem;
+    }
+
+    .fk-brand .brand-sub {
+        font-size: 0.65rem;
+    }
+
+    .fk-search-input {
+        padding: 10px 12px;
+        font-size: 0.88rem;
+    }
+
+    .fk-search-input::placeholder {
+        font-size: 0.82rem;
+    }
+
+    .fk-nav-link {
+        font-size: 0.9rem;
+    }
+
+    /* --- TOP BAR --- */
+    .top-announcement-bar {
+        font-size: 0.75rem;
+        padding: 5px 0;
+    }
+
+    .top-announcement-bar .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 4px;
+    }
+
+    /* --- CATEGORY STRIP --- */
+    .category-strip-link {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+    }
+
+    .category-strip-link .cat-icon {
+        font-size: 1rem;
+    }
+
+    /* --- HERO BANNER --- */
+    .fk-banner-slide {
+        padding: 24px 14px;
+    }
+
+    .fk-banner-slide h1 {
+        font-size: 1.25rem !important;
+        line-height: 1.25;
+    }
+
+    .fk-banner-slide .lead {
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+
+    .fk-banner-slide .badge {
+        font-size: 0.72rem !important;
+        padding: 4px 10px !important;
+    }
+
+    .fk-banner-slide .btn {
+        padding: 9px 14px !important;
+        font-size: 0.8rem;
+    }
+
+    .fk-hero-carousel {
+        border-radius: var(--radius-md);
+    }
+
+    /* --- PRODUCT CARDS --- */
+    .fk-card-image-box {
+        height: 150px;
+    }
+
+    .fk-product-img {
+        max-height: 120px;
+    }
+
+    .fk-card-body {
+        padding: 10px 10px;
+    }
+
+    .fk-product-category {
+        font-size: 0.65rem;
+    }
+
+    .fk-product-title {
+        font-size: 0.82rem;
+        line-height: 1.3;
+        height: auto;
+    }
+
     .fk-current-price {
+        font-size: 1rem;
+    }
+
+    .fk-old-price {
+        font-size: 0.78rem;
+    }
+
+    .fk-discount-text {
+        font-size: 0.72rem !important;
+    }
+
+    .fk-rating-badge {
+        font-size: 0.68rem;
+        padding: 1px 5px;
+    }
+
+    .fk-assured-tag {
+        font-size: 0.68rem;
+    }
+
+    .fk-discount-badge {
+        font-size: 0.68rem;
+        padding: 2px 6px;
+    }
+
+    .fk-wishlist-btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Card action buttons */
+    .fk-card-actions .btn {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+    }
+
+    .fk-card-actions {
+        gap: 4px !important;
+    }
+
+    /* --- CATEGORY GRID --- */
+    .cat-thumbnail {
+        width: 60px;
+        height: 60px;
+    }
+
+    .cat-card-title {
+        font-size: 0.72rem;
+    }
+
+    .cat-card-sub {
+        font-size: 0.68rem !important;
+    }
+
+    /* --- SECTION HEADINGS --- */
+    .section-heading {
         font-size: 1.05rem;
     }
-    
-    .fk-card-body {
-        padding: 10px 12px;
+
+    .section-card-wrapper {
+        padding: 14px !important;
+    }
+
+    /* --- FEATURES STRIP (Value Prop) --- */
+    .feature-box {
+        padding: 10px !important;
+    }
+
+    .feature-box h6 {
+        font-size: 0.75rem;
+    }
+
+    .feature-box small {
+        font-size: 0.68rem;
+    }
+
+    .feature-box .feature-icon {
+        font-size: 1.3rem !important;
+    }
+
+    /* --- PAGE BANNER --- */
+    .page-banner {
+        padding: 20px 0;
+    }
+
+    .page-banner h1 {
+        font-size: 1.25rem;
+    }
+
+    .page-banner p {
+        font-size: 0.82rem;
+    }
+
+    /* --- CART PAGE --- */
+    .fk-cart-thumb {
+        width: 56px;
+        height: 56px;
+    }
+
+    .fk-cart-item-card {
+        padding: 12px !important;
+    }
+
+    .qty-step-btn {
+        width: 30px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    /* --- CHECKOUT --- */
+    .checkout-box {
+        padding: 14px;
+        border-radius: var(--radius-sm);
     }
 
     .checkout-step-body {
         padding: 14px 10px;
+    }
+
+    .checkout-step-header {
+        padding: 10px 14px;
+    }
+
+    .checkout-step-header h4 {
+        font-size: 0.88rem;
+    }
+
+    .step-num {
+        width: 22px;
+        height: 22px;
+        font-size: 0.75rem;
+    }
+
+    .order-summary-box {
+        padding: 16px;
+    }
+
+    /* --- PAYMENT --- */
+    .bank-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+
+    .bank-option-btn {
+        padding: 8px 6px;
+        font-size: 0.78rem;
+    }
+
+    .upi-qr-card {
+        padding: 14px;
+    }
+
+    .upi-pill {
+        font-size: 0.68rem;
+        padding: 3px 8px;
+    }
+
+    .payment-method-card {
+        border-radius: var(--radius-sm);
+    }
+
+    /* --- PRODUCT DETAIL --- */
+    .detail-main-image {
+        max-height: 240px;
+    }
+
+    .fk-detail-heading {
+        font-size: 1.15rem;
+    }
+
+    /* --- ABOUT & CONTACT --- */
+    .about-cta-box {
+        padding: 24px 16px;
+    }
+
+    .about-cta-box h2 {
+        font-size: 1.3rem;
+    }
+
+    .about-stat-card {
+        padding: 18px 14px;
+    }
+
+    .about-stat-card h3 {
+        font-size: 1.6rem;
+    }
+
+    .about-feature-card {
+        padding: 16px;
+    }
+
+    .about-feature-icon {
+        font-size: 1.8rem;
+    }
+
+    .contact-info-box, .contact-form-box {
+        padding: 20px 16px;
+    }
+
+    /* --- FORMS --- */
+    .form-control, .form-select {
+        padding: 9px 12px;
+        font-size: 0.9rem;
+    }
+
+    .fk-input-styled {
+        padding: 9px 12px;
+        font-size: 0.9rem;
+    }
+
+    /* --- AUTH PAGES --- */
+    .fk-auth-card {
+        border-radius: var(--radius-md) !important;
+    }
+
+    .fk-auth-sidebar {
+        padding: 20px !important;
+        border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .fk-auth-sidebar h2 {
+        font-size: 1.3rem;
+    }
+
+    /* --- BUTTONS --- */
+    .btn-main, .btn-primary {
+        padding: 8px 16px;
+        font-size: 0.88rem;
+    }
+
+    .btn-warning-custom {
+        padding: 8px 16px;
+        font-size: 0.88rem;
+    }
+
+    .btn-orange-custom {
+        padding: 8px 16px;
+        font-size: 0.88rem;
+    }
+
+    .small-btn {
+        font-size: 0.78rem;
+        padding: 5px 10px;
+    }
+
+    /* --- ADMIN PANEL --- */
+    .admin-sidebar {
+        padding: 12px;
+    }
+
+    .admin-sidebar h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+    }
+
+    .admin-sidebar a {
+        padding: 7px 10px;
+        font-size: 0.8rem;
+    }
+
+    .admin-content {
+        padding: 14px 12px;
+    }
+
+    .admin-topbar h1 {
+        font-size: 1.3rem;
+    }
+
+    .admin-stat-card {
+        padding: 14px;
+    }
+
+    .admin-stat-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .admin-stat-card p {
+        font-size: 0.78rem;
+    }
+
+    .admin-card {
+        padding: 14px;
+    }
+
+    .admin-table th {
+        padding: 10px 10px;
+        font-size: 0.78rem;
+    }
+
+    .admin-table td {
+        padding: 10px 10px;
+        font-size: 0.82rem;
+    }
+
+    .admin-login-card {
+        padding: 24px;
+    }
+
+    /* --- FOOTER --- */
+    .fk-footer {
+        font-size: 0.82rem;
+    }
+
+    .footer-heading {
+        font-size: 0.72rem;
+        margin-bottom: 12px;
+    }
+
+    .footer-desc {
+        font-size: 0.82rem;
+    }
+
+    .footer-contact {
+        font-size: 0.82rem;
+    }
+
+    .fk-footer .py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    /* --- PAGINATION --- */
+    .custom-pagination .page-link {
+        padding: 6px 10px;
+        font-size: 0.82rem;
+        margin: 0 1px;
+    }
+
+    /* --- ORDER HISTORY --- */
+    .order-history-card .bg-light {
+        padding: 12px !important;
+    }
+
+    .order-tracking-step {
+        padding-left: 24px;
+        font-size: 0.85rem;
+    }
+
+    /* --- STUDENT PROMO --- */
+    .student-offer-banner {
+        padding: 20px !important;
+    }
+
+    .student-offer-banner h2 {
+        font-size: 1.2rem;
+    }
+
+    .student-offer-banner .lead {
+        font-size: 0.85rem;
+    }
+
+    .student-offer-banner .badge {
+        font-size: 0.72rem !important;
+    }
+
+    /* --- BACK TO TOP --- */
+    .back-to-top-bar {
+        font-size: 0.82rem;
+    }
+}
+
+/* ==========================================================================
+   VERY SMALL PHONES (≤399px) — Micro optimizations
+   ========================================================================== */
+@media (max-width: 399.98px) {
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .fk-brand .brand-title {
+        font-size: 1rem;
+    }
+
+    .fk-brand .brand-sub {
+        font-size: 0.6rem;
+    }
+
+    .fk-banner-slide {
+        padding: 18px 10px;
+    }
+
+    .fk-banner-slide h1 {
+        font-size: 1.1rem !important;
+    }
+
+    .fk-banner-slide .lead {
+        font-size: 0.78rem;
+    }
+
+    .fk-banner-slide .btn {
+        padding: 8px 12px !important;
+        font-size: 0.75rem;
+    }
+
+    /* Product cards — tighter */
+    .fk-card-image-box {
+        height: 130px;
+    }
+
+    .fk-product-img {
+        max-height: 100px;
+    }
+
+    .fk-card-body {
+        padding: 8px;
+    }
+
+    .fk-product-title {
+        font-size: 0.75rem;
+    }
+
+    .fk-current-price {
+        font-size: 0.9rem;
+    }
+
+    .fk-old-price {
+        font-size: 0.72rem;
+    }
+
+    .fk-card-actions .btn {
+        font-size: 0.7rem;
+        padding: 4px 6px;
+    }
+
+    /* Category */
+    .cat-thumbnail {
+        width: 50px;
+        height: 50px;
+    }
+
+    .cat-card-title {
+        font-size: 0.68rem;
+    }
+
+    /* Section */
+    .section-heading {
+        font-size: 0.95rem;
+    }
+
+    .section-card-wrapper {
+        padding: 10px !important;
+    }
+
+    /* Feature strip */
+    .feature-box h6 {
+        font-size: 0.7rem;
+    }
+
+    .feature-box small {
+        font-size: 0.65rem;
+    }
+
+    /* Buttons */
+    .btn-main, .btn-primary,
+    .btn-warning-custom,
+    .btn-orange-custom {
+        padding: 7px 12px;
+        font-size: 0.82rem;
+    }
+
+    /* Checkout/Cart */
+    .fk-cart-thumb {
+        width: 48px;
+        height: 48px;
+    }
+
+    .checkout-box {
+        padding: 10px;
+    }
+
+    .order-summary-box {
+        padding: 12px;
+    }
+
+    /* Admin */
+    .admin-topbar h1 {
+        font-size: 1.15rem;
+    }
+
+    .admin-stat-card h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Footer */
+    .fk-footer .py-5 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .footer-heading {
+        font-size: 0.68rem;
+    }
+
+    /* Auth */
+    .fk-auth-sidebar {
+        padding: 16px !important;
+    }
+
+    .fk-auth-sidebar h2 {
+        font-size: 1.15rem;
+    }
+}
+
+/* ==========================================================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ========================================================================== */
+@media (hover: none) and (pointer: coarse) {
+    /* Disable hover transforms on touch devices to prevent jank */
+    .fk-product-card:hover {
+        transform: none;
+    }
+
+    .fk-product-card:hover .fk-product-img {
+        transform: none;
+    }
+
+    .fk-category-card:hover {
+        transform: none;
+    }
+
+    .fk-category-card:hover .cat-thumbnail {
+        transform: none;
+    }
+
+    .admin-stat-card:hover {
+        transform: none;
+    }
+
+    .about-feature-card:hover {
+        transform: none;
+    }
+
+    .btn-main:hover, .btn-primary:hover,
+    .btn-warning-custom:hover,
+    .btn-orange-custom:hover {
+        transform: none;
+    }
+
+    .fk-cart-btn:hover {
+        transform: none;
+    }
+
+    /* Make touch targets at least 44px */
+    .fk-nav-link {
+        min-height: 44px;
+    }
+
+    .category-strip-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .fk-wishlist-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .custom-pagination .page-link {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-links a {
+        display: inline-block;
+        padding: 4px 0;
+    }
+}
+
+/* ==========================================================================
+   LANDSCAPE PHONE OPTIMIZATION
+   ========================================================================== */
+@media (max-height: 500px) and (orientation: landscape) {
+    .fk-banner-slide {
+        padding: 16px 20px;
+        min-height: auto;
+    }
+
+    .fk-banner-slide h1 {
+        font-size: 1.2rem !important;
+    }
+
+    .fk-banner-slide .lead {
+        font-size: 0.78rem;
+        margin-bottom: 10px !important;
+    }
+
+    .page-banner {
+        padding: 16px 0;
+    }
+
+    .page-banner h1 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+@media print {
+    .fk-main-navbar,
+    .top-announcement-bar,
+    .fk-category-strip,
+    .back-to-top-bar,
+    .fk-footer,
+    .fk-card-actions,
+    .fk-wishlist-btn,
+    .carousel-control-prev,
+    .carousel-control-next,
+    .carousel-indicators {
+        display: none !important;
+    }
+
+    body {
+        background: #ffffff;
+        color: #000000;
+    }
+
+    .fk-product-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
     }
 }
