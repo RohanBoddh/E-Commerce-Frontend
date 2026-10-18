@@ -358,21 +358,51 @@ include(__DIR__ . '/includes/navbar.php');
 </section>
 
 <!-- EXCLUSIVE STUDENT PROMO BANNER -->
-<section class="fk-student-offer-section py-4">
+<section class="fk-student-offer-section my-4">
     <div class="container">
-        <div class="student-offer-banner p-4 p-md-5 rounded-4 shadow-sm text-white position-relative overflow-hidden">
-            <div class="row align-items-center position-relative z-1">
-                <div class="col-lg-8">
-                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 fs-6">
-                        🎓 GAUTAM BUDDHA UNIVERSITY SPECIAL
+        <div class="student-offer-banner position-relative overflow-hidden">
+            <div class="row align-items-center position-relative z-2 g-4">
+                <div class="col-lg-7">
+                    <span class="gbu-special-badge">
+                        <span>🎓</span> GAUTAM BUDDHA UNIVERSITY SPECIAL
                     </span>
-                    <h2 class="display-6 fw-bold mb-3">Hostel Room Delivery in Under 30 Minutes</h2>
-                    <p class="lead mb-4 text-light-opacity">
+                    <h2 class="banner-heading">Hostel Room Delivery in Under 30 Minutes</h2>
+                    <p class="banner-desc">
                         Order stationery before late-night assignments or get snacks and tech accessories delivered directly to your hostel gate with <strong>zero delivery fee</strong>.
                     </p>
-                    <a href="shop.php" class="btn btn-warning-custom px-4 py-3 fw-bold">
-                        Browse All Campus Essentials <i class="bi bi-arrow-right ms-1"></i>
-                    </a>
+                    <div class="d-flex flex-wrap gap-3 align-items-center">
+                        <a href="shop.php" class="btn btn-warning-custom px-4 py-3 fw-bold">
+                            Browse All Campus Essentials <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                        <span class="text-white-50 small">
+                            <i class="bi bi-shield-check text-warning me-1"></i> GBU Campus Exclusive
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="gbu-perks-grid">
+                        <div class="gbu-perk-item">
+                            <div class="perk-icon">⚡</div>
+                            <div class="perk-text">
+                                <h6>30-Min Express Drop</h6>
+                                <small>Direct to your hostel block gate</small>
+                            </div>
+                        </div>
+                        <div class="gbu-perk-item">
+                            <div class="perk-icon">🏢</div>
+                            <div class="perk-text">
+                                <h6>All Hostels Covered</h6>
+                                <small>Aryabhatta, Munshi Premchand & all blocks</small>
+                            </div>
+                        </div>
+                        <div class="gbu-perk-item">
+                            <div class="perk-icon">💰</div>
+                            <div class="perk-text">
+                                <h6>Zero Delivery Charges</h6>
+                                <small>100% Free on every student order</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
