@@ -9,20 +9,31 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 }
 
 $product_id_str = trim($_GET['id']);
-$productOid     = toObjectId($product_id_str);
+$product = null;
+try {
+    $productOid = toObjectId($product_id_str);
+    if ($productOid) {
+        $productDoc = $db->products->findOne(['_id' => $productOid]);
+        if ($productDoc) {
+            $product = docToArray($productDoc);
+        }
+    }
+} catch (Throwable $e) {}
 
-if (!$productOid) {
+if (!$product) {
+    $fallback = getCatalogFallback();
+    foreach ($fallback['products'] ?? [] as $p) {
+        if (($p['id'] ?? '') === $product_id_str || ($p['product_id'] ?? '') == $product_id_str) {
+            $product = $p;
+            break;
+        }
+    }
+}
+
+if (!$product) {
     header("Location: shop.php");
     exit();
 }
-
-$productDoc = $db->products->findOne(['_id' => $productOid]);
-if (!$productDoc) {
-    header("Location: shop.php");
-    exit();
-}
-
-$product = docToArray($productDoc);
 
 // Attach category name
 $categoryName = 'Essentials';

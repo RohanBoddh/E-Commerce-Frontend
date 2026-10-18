@@ -32,6 +32,14 @@ try {
     }
 } catch (Throwable $e) {}
 
+if (empty($trendingProducts)) {
+    $fallback = getCatalogFallback();
+    $trendingProducts = array_slice($fallback['products'] ?? [], 0, 16);
+    if (empty($homeCategories)) {
+        $homeCategories = $fallback['categories'] ?? [];
+    }
+}
+
 // Wishlist product IDs for logged-in user
 $userWishlistIds = [];
 if (isset($_SESSION['user_id'])) {

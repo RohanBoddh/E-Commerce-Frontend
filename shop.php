@@ -14,57 +14,77 @@ if ($page < 1) $page = 1;
 $limit  = 12;
 $offset = ($page - 1) * $limit;
 
-// Fetch categories for the filter
-$categoryCursor = $db->categories->find([], ['sort' => ['category_name' => 1]]);
-$allCategories  = cursorToArray($categoryCursor);
-
-// Build product filter
-$filter = [];
-
-if ($search !== '') {
-    $filter['name'] = ['$regex' => $search, '$options' => 'i'];
-}
-
-if ($category !== '') {
-    $filter['category_id'] = $category;
-}
-
-// Sort criteria
-$sortMap = [
-    'newest'     => ['_id' => -1],
-    'price_asc'  => ['price' => 1],
-    'price_desc' => ['price' => -1],
-    'name_asc'   => ['name' => 1]
-];
-$sortCriteria = $sortMap[$sortKey] ?? ['_id' => -1];
-
-// Count total matching products
-$totalProducts = (int)$db->products->countDocuments($filter);
-$totalPages    = max(1, (int)ceil($totalProducts / $limit));
-
-// Fetch products (paginated)
-$productCursor = $db->products->find($filter, [
-    'sort'  => $sortCriteria,
-    'skip'  => $offset,
-    'limit' => $limit
-]);
-
+$allCategories = [];
 $products = [];
-foreach ($productCursor as $doc) {
-    $productArr = docToArray($doc);
+$totalProducts = 0;
+$totalPages = 1;
 
-    // Attach category name
-    $categoryName = 'Uncategorized';
-    if (!empty($productArr['category_id'])) {
-        $catOid = toObjectId($productArr['category_id']);
-        $cat    = $catOid ? $db->categories->findOne(['_id' => $catOid]) : null;
-        if ($cat) {
-            $catArr       = docToArray($cat);
-            $categoryName = $catArr['category_name'];
-        }
+try {
+    // Fetch categories for the filter
+    $categoryCursor = $db->categories->find([], ['sort' => ['category_name' => 1]]);
+    $allCategories  = cursorToArray($categoryCursor);
+
+    // Build product filter
+    $filter = [];
+    if ($search !== '') {
+        $filter['name'] = ['$regex' => $search, '$options' => 'i'];
     }
-    $productArr['category_name'] = $categoryName;
-    $products[] = $productArr;
+    if ($category !== '') {
+        $filter['category_id'] = $category;
+    }
+
+    $sortMap = [
+        'newest'     => ['_id' => -1],
+        'price_asc'  => ['price' => 1],
+        'price_desc' => ['price' => -1],
+        'name_asc'   => ['name' => 1]
+    ];
+    $sortCriteria = $sortMap[$sortKey] ?? ['_id' => -1];
+
+    $totalProducts = (int)$db->products->countDocuments($filter);
+    $totalPages    = max(1, (int)ceil($totalProducts / $limit));
+
+    $productCursor = $db->products->find($filter, [
+        'sort'  => $sortCriteria,
+        'skip'  => $offset,
+        'limit' => $limit
+    ]);
+
+    foreach ($productCursor as $doc) {
+        $productArr = docToArray($doc);
+        $categoryName = 'Uncategorized';
+        if (!empty($productArr['category_id'])) {
+            $catOid = toObjectId($productArr['category_id']);
+            $cat    = $catOid ? $db->categories->findOne(['_id' => $catOid]) : null;
+            if ($cat) {
+                $catArr       = docToArray($cat);
+                $categoryName = $catArr['category_name'];
+            }
+        }
+        $productArr['category_name'] = $categoryName;
+        $products[] = $productArr;
+    }
+} catch (Throwable $e) {}
+
+if (empty($products)) {
+    $fallback = getCatalogFallback();
+    if (empty($allCategories)) {
+        $allCategories = $fallback['categories'] ?? [];
+    }
+    $allFallbackProducts = $fallback['products'] ?? [];
+    if ($category !== '') {
+        $allFallbackProducts = array_filter($allFallbackProducts, function($p) use ($category) {
+            return ($p['category_id'] ?? '') === $category;
+        });
+    }
+    if ($search !== '') {
+        $allFallbackProducts = array_filter($allFallbackProducts, function($p) use ($search) {
+            return stripos($p['name'] ?? '', $search) !== false;
+        });
+    }
+    $totalProducts = count($allFallbackProducts);
+    $totalPages = max(1, (int)ceil($totalProducts / $limit));
+    $products = array_slice(array_values($allFallbackProducts), $offset, $limit);
 }
 
 // Wishlist product IDs for current user
